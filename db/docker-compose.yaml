@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  usersession:
+    image: redis:latest
+    container_name: PET_DB
+    restart: always 
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass 123 
+    volumes:
+      - ./usersdata:/var/lib/redis/usersdata
+volumes:
+  usersession:
+    driver: local
